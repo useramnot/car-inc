@@ -1,2 +1,4 @@
-# car-inc
-SDU Odense (Fall 2023)
+# Mobile Software Development
+**Class ID:** T510032101<br>
+**Professor:** Mahyar Tourchi Moghaddam<br>
+**Email:** mtmo@mmmi.sdu.dk
