@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image}
 import { NavigationContainer } from '@react-navigation/native'
 
 type ItemData = {
-  id: number
+  id: string
   price: number
   model: string
   brand: string
@@ -14,7 +14,7 @@ type ItemData = {
 
 const DATA: ItemData[] = [
   {  
-    "id": 1,
+    id: '1',
     "price": 376.91,
     "brand": "Kia",
     "model": "Ceed",
@@ -23,7 +23,7 @@ const DATA: ItemData[] = [
     "image": require('../../assets/cars/kia-ceed.png')
   },
   {
-    id: 2,
+    id: '2',
     price: 21.37,
     brand: "Volkswagen",
     model: "Passat",
@@ -32,7 +32,7 @@ const DATA: ItemData[] = [
     image: require('../../assets/cars/volkswagen-passat.png')
   },
   {  
-    id: 3,
+    id: '3',
     price: 846.05,
     brand: "Toyota",
     model: "Rav4",
