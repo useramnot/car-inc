@@ -64,20 +64,24 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center'
   },
+
   image:{
     alignSelf: 'center',
     resizeMode: 'contain',
     width: '50%'
   },
+
   boxStyles: {
     borderColor: '#000',
     borderRadius: 100,
     borderWidth: 2,
     width: '52.5%'
   },
+
   dropdownStyles: {
     // @TODO something
   },
+  
   button:{
     alignItems: 'center',
     backgroundColor: '#000',
@@ -87,6 +91,7 @@ const styles = StyleSheet.create({
     width: '75%',
     height: 48
   },
+  
   buttontext:{
     color: '#fff',
     fontSize: 15,

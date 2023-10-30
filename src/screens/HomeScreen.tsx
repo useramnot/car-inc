@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image} from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
+
+// const navigation = useNavigation<any>()        // @TODO
 
 type ItemData = {
   id: string
@@ -58,12 +60,12 @@ const Item = ({item, onPress, backgroundColor}: ItemProps) => (
     <View>
 
       <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-        <View style={{flex: 0.5}}>
+        <View style={{flex: 0.5, alignItems: 'flex-start'}}>
           <Text style={styles.model}>{item.model}</Text>
           <Text style={styles.brand}>{item.brand}</Text>
         </View>
 
-        <View style={{flex: 0.5}}>
+        <View style={{flex: 0.5, alignItems: 'flex-end'}}>
           <Text style={styles.transmission}>{item.transmission}</Text>
           <Text style={styles.seats}>
             <Text style={{fontSize: 18}}>Seats: </Text>
@@ -73,19 +75,23 @@ const Item = ({item, onPress, backgroundColor}: ItemProps) => (
 
       <Image source={item.image} style={styles.image} />
 
-      <View>
-        <Text style={styles.price}>
-          <Text style={{fontSize: 20}}>Price:  </Text>
-          {item.price}
-          <Text style={{fontSize: 18}}> dkr </Text>
-        </Text>
+      <View style={{flexDirection: 'row'}}>
+        <View style={{flex: 0.7, justifyContent: 'center'}}>
+          <Text style={styles.price}>
+            <Text style={{fontSize: 20}}>Price: </Text>
+            {item.price}
+            <Text style={{fontSize: 18}}>dkr </Text>
+          </Text>
+        </View>
 
-        {/* <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Text style={styles.buttontext}>Search</Text>
-        </TouchableOpacity> */}
+        <View style={{flex: 0.5, justifyContent: 'center', alignItems: 'center'}}>
+          <TouchableHighlight
+            style={styles.button}
+            // onPress={() => navigation.navigate.goBack()}
+          >
+            <Text style={styles.buttontext}>See details</Text>
+          </TouchableHighlight>
+        </View>
       </View>
 
     </View>
@@ -162,5 +168,21 @@ const styles = StyleSheet.create({
     height: 140,
     resizeMode: 'contain',
     marginTop: 5,
+  },
+
+  button:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#444',
+    borderRadius: 30,
+    // margin: 10,
+    width: '96%',
+    height: 50,
+  },
+
+  buttontext:{
+    color: '#fff',
+    fontSize: 15,
+    margin: 10,
   },
 })
