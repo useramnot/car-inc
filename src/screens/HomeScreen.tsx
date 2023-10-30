@@ -3,19 +3,43 @@ import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image}
 import { NavigationContainer } from '@react-navigation/native'
 
 type ItemData = {
-  id: string
+  id: number
+  price: number
   model: string
   brand: string
+  transmission: string
+  seats: number
   image: any
 }
 
 const DATA: ItemData[] = [
-  {
-    id: '1',
-    brand: 'Volkswagen',
-    model: 'Passat',
-    image: require('../../assets/cars/volkswagen-passat.jpg')
+  {  
+    "id": 1,
+    "price": 376.91,
+    "brand": "Kia",
+    "model": "Ceed",
+    "transmission": "Automatic",
+    "seats": 5,
+    "image": require('../../assets/cars/kia-ceed.png')
   },
+  {
+    id: 2,
+    price: 21.37,
+    brand: "Volkswagen",
+    model: "Passat",
+    transmission: "Manual",
+    seats: 5,
+    image: require('../../assets/cars/volkswagen-passat.png')
+  },
+  {  
+    id: 3,
+    price: 846.05,
+    brand: "Toyota",
+    model: "Rav4",
+    transmission: "Automatic",
+    seats: 5,
+    image: require('../../assets/cars/toyota-rav4.png')
+  }
 ]
 
 
@@ -91,9 +115,8 @@ const styles = StyleSheet.create({
 
   image:{
     width: '100%',
-    height: 160,
-    resizeMode: 'center',
-    borderRadius: 10,
-    marginTop: 10,
+    height: 140,
+    resizeMode: 'contain',
+    marginTop: 5,
   },
 })

@@ -6,14 +6,14 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { SelectList } from 'react-native-dropdown-select-list'
 
-export const [selected, setSelected] = useState()
+// export const [selected, setSelected] = useState()
 
 
 export default function HomeScreen() {  
   const [searchText, setSearchText] = useState()
   const navigation = useNavigation<any>()
 
-  // const [selected, setSelected] = useState()
+  const [selected, setSelected] = useState()
   
   // ================================================================================
   // Replace with data fetched from SQLite when possible

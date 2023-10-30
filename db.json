@@ -1,132 +1,132 @@
 {
     "cities": [
         {
-            "name": "Aalborg",
+            "city": "Aalborg",
             "cars": [
                 {  
                     "id": 1,
                     "price": 568.28,
-                    "manufacturer": "Renault",
-                    "name": "Zoe Electric",
+                    "brand": "Renault",
+                    "model": "Zoe Electric",
                     "transmission": "Automatic",
                     "seats": 4
                 },
                 {
                     "id": 2,
                     "price": 492.79,
-                    "manufacturer": "Hyundai",
-                    "name": "i30 SW",
+                    "brand": "Hyundai",
+                    "model": "i30 SW",
                     "transmission": "Manual",
                     "seats": 5
                 },
                 {  
                     "id": 3,
                     "price": 846.05,
-                    "manufacturer": "Toyota",
-                    "name": "Rav4",
+                    "brand": "Toyota",
+                    "model": "Rav4",
                     "transmission": "Automatic",
                     "seats": 5  
                 }
             ]
         },
         {
-            "name": "Aarhus",
+            "city": "Aarhus",
             "cars": [
                 {  
                     "id": 1,
                     "price": 721.64,
-                    "manufacturer": "Hyundai",
-                    "name": "i30 SW",
+                    "brand": "Hyundai",
+                    "model": "i30 SW",
                     "transmission": "Manual",
                     "seats": 5
                 },
                 {  
                     "id": 2,
                     "price": 507.13,
-                    "manufacturer": "Kia",
-                    "name": "Picanto",
+                    "brand": "Kia",
+                    "model": "Picanto",
                     "transmission": "Manual",
                     "seats": 4
                 }
             ]
         },
         {
-            "name": "Copenhagen",
+            "city": "Copenhagen",
             "cars": [
                 {  
                     "id": 1,
                     "price": 341.48,
-                    "manufacturer": "Opel",
-                    "name": "Corsa",
+                    "brand": "Opel",
+                    "model": "Corsa",
                     "transmission": "Manual",
                     "seats": 5
                 },
                 {
                     "id": 2,
                     "price": 21.37,
-                    "manufacturer": "Volkswagen",
-                    "name": "Passat",
+                    "brand": "Volkswagen",
+                    "model": "Passat",
                     "transmission": "Manual",
                     "seats": 5
                 },
                 {  
                     "id": 3,
                     "price": 568.28,
-                    "manufacturer": "Renault",
-                    "name": "Zoe Electric",
+                    "brand": "Renault",
+                    "model": "Zoe Electric",
                     "transmission": "Automatic",
                     "seats": 4
                 },
                 {  
                     "id": 4,
                     "price": 646.23,
-                    "manufacturer": "Skoda",
-                    "name": "Octavia SW",
+                    "brand": "Skoda",
+                    "model": "Octavia SW",
                     "transmission": "Manual",
                     "seats": 5
                 },
                 {  
                     "id": 5,
                     "price": 929.73,
-                    "manufacturer": "BMW",
-                    "name": "2 Series",
+                    "brand": "BMW",
+                    "model": "2 Series",
                     "transmission": "Automatic",
                     "seats": 4
                 },
                 {  
                     "id": 6,
                     "price": 846.05,
-                    "manufacturer": "Toyota",
-                    "name": "Rav4",
+                    "brand": "Toyota",
+                    "model": "Rav4",
                     "transmission": "Automatic",
                     "seats": 5  
                 },
                 {  
                     "id": 7,
                     "price": 1731.88,
-                    "manufacturer": "Skoda",
-                    "name": "Octavia SW",
+                    "brand": "Skoda",
+                    "model": "Octavia SW",
                     "transmission": "Automatic",
                     "seats": 5
                 }
             ]
         },
         {
-            "name": "Odense",
+            "city": "Odense",
             "cars": [
                 {  
                     "id": 1,
                     "price": 1731.88,
-                    "manufacturer": "Skoda",
-                    "name": "Octavia SW",
+                    "brand": "Skoda",
+                    "model": "Octavia SW",
                     "transmission": "Automatic",
                     "seats": 5
                 },
                 {  
                     "id": 2,
                     "price": 376.91,
-                    "manufacturer": "Kia",
-                    "name": "Ceed",
+                    "brand": "Kia",
+                    "model": "Ceed",
                     "transmission": "Automatic",
                     "seats": 5
                 }
