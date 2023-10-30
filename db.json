@@ -1,0 +1,136 @@
+{
+    "cities": [
+        {
+            "name": "Aalborg",
+            "cars": [
+                {  
+                    "id": 1,
+                    "price": 568.28,
+                    "manufacturer": "Renault",
+                    "name": "Zoe Electric",
+                    "transmission": "Automatic",
+                    "seats": 4
+                },
+                {
+                    "id": 2,
+                    "price": 492.79,
+                    "manufacturer": "Hyundai",
+                    "name": "i30 SW",
+                    "transmission": "Manual",
+                    "seats": 5
+                },
+                {  
+                    "id": 3,
+                    "price": 846.05,
+                    "manufacturer": "Toyota",
+                    "name": "Rav4",
+                    "transmission": "Automatic",
+                    "seats": 5  
+                }
+            ]
+        },
+        {
+            "name": "Aarhus",
+            "cars": [
+                {  
+                    "id": 1,
+                    "price": 721.64,
+                    "manufacturer": "Hyundai",
+                    "name": "i30 SW",
+                    "transmission": "Manual",
+                    "seats": 5
+                },
+                {  
+                    "id": 2,
+                    "price": 507.13,
+                    "manufacturer": "Kia",
+                    "name": "Picanto",
+                    "transmission": "Manual",
+                    "seats": 4
+                }
+            ]
+        },
+        {
+            "name": "Copenhagen",
+            "cars": [
+                {  
+                    "id": 1,
+                    "price": 341.48,
+                    "manufacturer": "Opel",
+                    "name": "Corsa",
+                    "transmission": "Manual",
+                    "seats": 5
+                },
+                {
+                    "id": 2,
+                    "price": 21.37,
+                    "manufacturer": "Volkswagen",
+                    "name": "Passat",
+                    "transmission": "Manual",
+                    "seats": 5
+                },
+                {  
+                    "id": 3,
+                    "price": 568.28,
+                    "manufacturer": "Renault",
+                    "name": "Zoe Electric",
+                    "transmission": "Automatic",
+                    "seats": 4
+                },
+                {  
+                    "id": 4,
+                    "price": 646.23,
+                    "manufacturer": "Skoda",
+                    "name": "Octavia SW",
+                    "transmission": "Manual",
+                    "seats": 5
+                },
+                {  
+                    "id": 5,
+                    "price": 929.73,
+                    "manufacturer": "BMW",
+                    "name": "2 Series",
+                    "transmission": "Automatic",
+                    "seats": 4
+                },
+                {  
+                    "id": 6,
+                    "price": 846.05,
+                    "manufacturer": "Toyota",
+                    "name": "Rav4",
+                    "transmission": "Automatic",
+                    "seats": 5  
+                },
+                {  
+                    "id": 7,
+                    "price": 1731.88,
+                    "manufacturer": "Skoda",
+                    "name": "Octavia SW",
+                    "transmission": "Automatic",
+                    "seats": 5
+                }
+            ]
+        },
+        {
+            "name": "Odense",
+            "cars": [
+                {  
+                    "id": 1,
+                    "price": 1731.88,
+                    "manufacturer": "Skoda",
+                    "name": "Octavia SW",
+                    "transmission": "Automatic",
+                    "seats": 5
+                },
+                {  
+                    "id": 2,
+                    "price": 376.91,
+                    "manufacturer": "Kia",
+                    "name": "Ceed",
+                    "transmission": "Automatic",
+                    "seats": 5
+                }
+            ]
+        }
+    ]
+}

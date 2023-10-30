@@ -1,89 +1,56 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View, FlatList, StatusBar, TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 
 type ItemData = {
-  id: string;
-  title: string;
-};
+  id: string
+  model: string
+  brand: string
+  image: any
+}
 
 const DATA: ItemData[] = [
   {
     id: '1',
-    title: 'Mitsubishi',
+    brand: 'Volkswagen',
+    model: 'Passat',
+    image: require('../../assets/cars/volkswagen-passat.jpg')
   },
-  {
-    id: '2',
-    title: 'Toyota',
-  },
-  {
-    id: '3',
-    title: 'Volkswagen',
-  },
-  {
-    id: '4',
-    title: 'Mazda',
-  },
-  {
-    id: '5',
-    title: 'Audi',
-  },
-  {
-    id: '6',
-    title: 'BMW',
-  },
-  {
-    id: '7',
-    title: 'Polonez',
-  },
-  {
-    id: '8',
-    title: 'Supra',
-  },
-  {
-    id: '9',
-    title: 'Tata',
-  },
-  {
-    id: '10',
-    title: 'Chuj',
-  },
-];
+]
 
 
 type ItemProps = {
-  item: ItemData;
-  onPress: () => void;
-  backgroundColor: string;
-};
-
-// const Item = ({title,}: ItemProps) => (
-//   <View style={styles.item}>
-//     <Text style={styles.title}>{title}</Text>
-//   </View>
-// );
+  item: ItemData
+  onPress: () => void
+  backgroundColor: string
+}
 
 const Item = ({item, onPress, backgroundColor}: ItemProps) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, {backgroundColor}]}>
-    <Text style={styles.title}>{item.title}</Text>
-  </TouchableOpacity>
-);
+  <TouchableHighlight onPress={onPress}
+    style={[styles.item, {backgroundColor}]}
+    activeOpacity={0.7}
+    underlayColor={'#eee'}>
+    <View>
+      <Text style={styles.model}>{item.model}</Text>
+      <Text style={styles.brand}>{item.brand}</Text>
+      <Image source={item.image} style={styles.image} />
+    </View>
+  </TouchableHighlight>
+)
 
 
 export default function HomeScreen(){
-  const [selectedId, setSelectedId] = useState<string>();
-
+  const [selectedId, setSelectedId] = useState<string>()
+  
   const renderItem = ({item}: {item: ItemData}) => {
-    const backgroundColor = item.id === selectedId ? 'purple' : '#fff';
-
     return(
       <Item 
         item={item}
         onPress={() => setSelectedId(item.id)}
-        backgroundColor={backgroundColor}
+        backgroundColor={item.id === selectedId ? '#ddd' : '#fff'}
       />
-    );
-  };
+    )
+  }
 
   return(
     // <NavigationContainer independent={true}>
@@ -92,9 +59,10 @@ export default function HomeScreen(){
           data={DATA}
           keyExtractor={item => item.id}
           renderItem={renderItem}
+          
         />
     // </NavigationContainer>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -112,7 +80,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  title: {
+  model: {
     fontSize: 32,
+    marginTop: -10,
   },
-});
+
+  brand: {
+    fontSize: 24,
+  },
+
+  image:{
+    width: '100%',
+    height: 160,
+    resizeMode: 'center',
+    borderRadius: 10,
+    marginTop: 10,
+  },
+})
