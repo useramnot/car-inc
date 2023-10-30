@@ -15,12 +15,12 @@ type ItemData = {
 const DATA: ItemData[] = [
   {  
     id: '1',
-    "price": 376.91,
-    "brand": "Kia",
-    "model": "Ceed",
-    "transmission": "Automatic",
-    "seats": 5,
-    "image": require('../../assets/cars/kia-ceed.png')
+    price: 376.91,
+    brand: "Kia",
+    model: "Ceed",
+    transmission: "Automatic",
+    seats: 5,
+    image: require('../../assets/cars/kia-ceed.png')
   },
   {
     id: '2',
@@ -50,14 +50,44 @@ type ItemProps = {
 }
 
 const Item = ({item, onPress, backgroundColor}: ItemProps) => (
-  <TouchableHighlight onPress={onPress}
+  <TouchableHighlight 
+    onPress={onPress}
     style={[styles.item, {backgroundColor}]}
     activeOpacity={0.7}
     underlayColor={'#eee'}>
     <View>
-      <Text style={styles.model}>{item.model}</Text>
-      <Text style={styles.brand}>{item.brand}</Text>
+
+      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{flex: 0.5}}>
+          <Text style={styles.model}>{item.model}</Text>
+          <Text style={styles.brand}>{item.brand}</Text>
+        </View>
+
+        <View style={{flex: 0.5}}>
+          <Text style={styles.transmission}>{item.transmission}</Text>
+          <Text style={styles.seats}>
+            <Text style={{fontSize: 18}}>Seats: </Text>
+          {item.seats}</Text>
+        </View>
+      </View>
+
       <Image source={item.image} style={styles.image} />
+
+      <View>
+        <Text style={styles.price}>
+          <Text style={{fontSize: 20}}>Price:  </Text>
+          {item.price}
+          <Text style={{fontSize: 18}}> dkr </Text>
+        </Text>
+
+        {/* <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Home')}
+        >
+          <Text style={styles.buttontext}>Search</Text>
+        </TouchableOpacity> */}
+      </View>
+
     </View>
   </TouchableHighlight>
 )
@@ -89,6 +119,8 @@ export default function HomeScreen(){
     )
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -110,6 +142,18 @@ const styles = StyleSheet.create({
   },
 
   brand: {
+    fontSize: 24,
+  },
+
+  price: {
+    fontSize: 24,
+  },
+
+  transmission: {
+    fontSize: 24,
+  },
+
+  seats: {
     fontSize: 24,
   },
 

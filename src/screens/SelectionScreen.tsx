@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from "react-native"
+import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native"
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { SelectList } from 'react-native-dropdown-select-list'
@@ -14,6 +14,8 @@ export default function HomeScreen() {
   const navigation = useNavigation<any>()
 
   const [selected, setSelected] = useState()
+
+  const [disableSearch] = useState(false)       // @TODO
   
   // ================================================================================
   // Replace with data fetched from SQLite when possible
@@ -34,14 +36,21 @@ export default function HomeScreen() {
           boxStyles={styles.boxStyles}
           dropdownStyles={styles.dropdownStyles}
           searchPlaceholder='Pick a city'
-          setSelected={setSelected}
+          setSelected={setSelected}       // @TODO 
         />
-        <TouchableOpacity
-          style={styles.button}
+
+        <TouchableHighlight
           onPress={() => navigation.navigate('Home')}
-        >
-          <Text style={styles.buttontext}>Search</Text>
-        </TouchableOpacity>
+          style={styles.button}
+          activeOpacity={0.7}
+          underlayColor="#bbb"
+          delayPressOut={400}
+          disabled={disableSearch}          // @TODO
+          >
+            <Text style={styles.buttontext}>Search</Text>
+        </TouchableHighlight>
+
+
     </View>
   )
 }
@@ -67,7 +76,7 @@ const styles = StyleSheet.create({
     width: '52.5%'
   },
   dropdownStyles: {
-    // something
+    // @TODO something
   },
   button:{
     alignItems: 'center',
@@ -82,5 +91,5 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 15,
     margin: 10
-  }
+  },
 })
