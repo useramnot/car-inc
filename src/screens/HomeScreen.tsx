@@ -78,9 +78,9 @@ const Item = ({item, onPress, backgroundColor}: ItemProps) => (
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 0.7, justifyContent: 'center'}}>
           <Text style={styles.price}>
-            <Text style={{fontSize: 20}}>Price: </Text>
+            {/* <Text style={{fontSize: 20}}>From: </Text> */}
             {item.price}
-            <Text style={{fontSize: 18}}>dkr </Text>
+            <Text style={{fontSize: 18}}> kr </Text>
           </Text>
         </View>
 
@@ -89,7 +89,7 @@ const Item = ({item, onPress, backgroundColor}: ItemProps) => (
             style={styles.button}
             // onPress={() => navigation.navigate.goBack()}
           >
-            <Text style={styles.buttontext}>See details</Text>
+            <Text style={styles.buttontext}>Select{/*See details*/}</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -173,11 +173,11 @@ const styles = StyleSheet.create({
   button:{
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#444',
+    backgroundColor: '#000',
     borderRadius: 30,
     // margin: 10,
-    width: '96%',
-    height: 50,
+    width: '90%',
+    height: 40,
   },
 
   buttontext:{
