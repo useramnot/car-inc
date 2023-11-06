@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
 
   buttontext:{
     color: '#fff',
-    fontSize: 16,
+    fontSize: 17,
     margin: 8,
   },
 })
