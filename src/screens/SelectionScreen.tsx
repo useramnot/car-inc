@@ -5,19 +5,20 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native"
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { SelectList } from 'react-native-dropdown-select-list'
+// import CarsData from './'  // @TODO
+
 // export const [selected, setSelected] = useState()
-import CarsData from './'
 
 
-export default function HomeScreen() {  
+export default function SelectionScreen({ navigation }: any) {  
+
   const [searchText, setSearchText] = useState()
-  const navigation = useNavigation<any>()
 
   const [selected, setSelected] = useState()
 
   const [disableSearch] = useState(false)
 
-  //const CarData = require('./../data/db')
+  //const CarData = require('../../data/db')
 
 
   // =================================================================

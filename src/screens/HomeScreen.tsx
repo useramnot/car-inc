@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image} from 'react-native'
-import { NavigationContainer, useNavigation } from '@react-navigation/native'
-
-// const navigation = useNavigation<any>()        // @TODO
+// import { NavigationContainer, useNavigation } from '@react-navigation/native'
 
 type ItemData = {
   id: string
@@ -44,14 +42,14 @@ const DATA: ItemData[] = [
   }
 ]
 
-
 type ItemProps = {
   item: ItemData
   onPress: () => void
+  onPressSelect: () => void
   backgroundColor: string
 }
 
-const Item = ({item, onPress, backgroundColor}: ItemProps) => (
+const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
   <TouchableHighlight 
     onPress={onPress}
     style={[styles.item, {backgroundColor}]}
@@ -62,12 +60,12 @@ const Item = ({item, onPress, backgroundColor}: ItemProps) => (
       <View style={{flexDirection: 'row', justifyContent: 'center'}}>
         <View style={{flex: 0.5, alignItems: 'flex-start'}}>
           <Text style={styles.model}>{item.model}</Text>
-          <Text style={styles.brand}>{item.brand}</Text>
+          <Text style={{fontSize: 24}}>{item.brand}</Text>
         </View>
 
         <View style={{flex: 0.5, alignItems: 'flex-end'}}>
-          <Text style={styles.transmission}>{item.transmission}</Text>
-          <Text style={styles.seats}>
+          <Text style={{fontSize: 22}}>{item.transmission}</Text>
+          <Text style={{fontSize: 24}}>
             <Text style={{fontSize: 18}}>Seats: </Text>
           {item.seats}</Text>
         </View>
@@ -77,19 +75,20 @@ const Item = ({item, onPress, backgroundColor}: ItemProps) => (
 
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 0.7, justifyContent: 'center'}}>
-          <Text style={styles.price}>
+          <Text style={{fontSize: 27}}>
             {/* <Text style={{fontSize: 20}}>From: </Text> */}
             {item.price}
-            <Text style={{fontSize: 18}}> kr </Text>
+            <Text style={{fontSize: 20}}> kr </Text>
           </Text>
         </View>
 
         <View style={{flex: 0.5, justifyContent: 'center', alignItems: 'center'}}>
           <TouchableHighlight
             style={styles.button}
-            // onPress={() => navigation.navigate.goBack()}
+            // onPress={() => setSelectedId(item.id)}
+            onPress={onPressSelect}
           >
-            <Text style={styles.buttontext}>Select{/*See details*/}</Text>
+            <Text style={styles.buttontext}>Select</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -99,30 +98,30 @@ const Item = ({item, onPress, backgroundColor}: ItemProps) => (
 )
 
 
-export default function HomeScreen(){
+export default function HomeScreen({ navigation }: any){
+  
   const [selectedId, setSelectedId] = useState<string>()
   
   const renderItem = ({item}: {item: ItemData}) => {
     return(
       <Item 
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        // onPress={() => setSelectedId(item.id)}
+        onPress={() => navigation.navigate('CarDetails')}
+        onPressSelect={() => navigation.navigate('Booking')}
         backgroundColor={item.id === selectedId ? '#ddd' : '#fff'}
       />
     )
   }
 
   return(
-    // <NavigationContainer independent={true}>
-        <FlatList style={styles.container}
-          overScrollMode='never'
-          data={DATA}
-          keyExtractor={item => item.id}
-          renderItem={renderItem}
-          
-        />
-    // </NavigationContainer>
-    )
+    <FlatList style={styles.container}
+      overScrollMode='never'
+      data={DATA}
+      keyExtractor={item => item.id}
+      renderItem={renderItem}
+    />
+  )
 }
 
 
@@ -147,22 +146,6 @@ const styles = StyleSheet.create({
     marginTop: -10,
   },
 
-  brand: {
-    fontSize: 24,
-  },
-
-  price: {
-    fontSize: 24,
-  },
-
-  transmission: {
-    fontSize: 24,
-  },
-
-  seats: {
-    fontSize: 24,
-  },
-
   image:{
     width: '100%',
     height: 140,
@@ -173,16 +156,16 @@ const styles = StyleSheet.create({
   button:{
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#000',
+    backgroundColor: '#333333',
     borderRadius: 30,
     // margin: 10,
-    width: '90%',
+    width: '80%',
     height: 40,
   },
 
   buttontext:{
     color: '#fff',
-    fontSize: 15,
-    margin: 10,
+    fontSize: 16,
+    margin: 8,
   },
 })
