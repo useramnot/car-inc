@@ -85,6 +85,8 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
         <View style={{flex: 0.5, justifyContent: 'center', alignItems: 'center'}}>
           <TouchableHighlight
             style={styles.button}
+            delayPressOut={400}
+            underlayColor='#434343'
             // onPress={() => setSelectedId(item.id)}
             onPress={onPressSelect}
           >
@@ -156,9 +158,8 @@ const styles = StyleSheet.create({
   button:{
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#333333',
-    borderRadius: 30,
-    // margin: 10,
+    backgroundColor: '#000',
+    borderRadius: 18,
     width: '80%',
     height: 40,
   },

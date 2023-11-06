@@ -16,7 +16,7 @@ export default function SelectionScreen({ navigation }: any) {
 
   const [selected, setSelected] = useState()
 
-  const [disableSearch] = useState(false)
+  let [disableSearch] = useState(false)
 
   //const CarData = require('../../data/db')
 
@@ -30,22 +30,29 @@ export default function SelectionScreen({ navigation }: any) {
   ]
   // =================================================================
 
+  if (selected === undefined) {
+    disableSearch = true
+    
+  }
+
   return (
     <View style={styles.container}>
         <Image source={require('../../assets/logo.png')} style={styles.image} />
-        <SelectList
-          data={data}
-          boxStyles={styles.boxStyles}
-          dropdownStyles={styles.dropdownStyles}
-          searchPlaceholder='Pick a city'
-          setSelected={setSelected}       // @TODO
-        />
+        <View style={{width: '75%'}}>
+          <SelectList
+            data={data}
+            boxStyles={styles.boxStyles}
+            dropdownStyles={styles.dropdownStyles}
+            searchPlaceholder='Pick a city'
+            setSelected={setSelected}       // @TODO
+          />
+        </View>
 
         <TouchableHighlight
           onPress={() => navigation.navigate('Home')}
           style={styles.button}
           activeOpacity={0.7}
-          underlayColor="#bbb"
+          underlayColor='#434343'
           delayPressOut={400}
           disabled={disableSearch}
           >
@@ -74,9 +81,8 @@ const styles = StyleSheet.create({
 
   boxStyles: {
     borderColor: '#000',
-    borderRadius: 100,
-    borderWidth: 2,
-    width: '52.5%'
+    borderRadius: 20,
+    borderWidth: 2
   },
 
   dropdownStyles: {
@@ -86,7 +92,7 @@ const styles = StyleSheet.create({
   button:{
     alignItems: 'center',
     backgroundColor: '#000',
-    borderRadius: 100,
+    borderRadius: 20,
     justifyContent: 'center',
     margin: 10,
     width: '75%',
