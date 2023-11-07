@@ -73,7 +73,7 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
         </View>
       </View>
 
-      <Image source={item.image} style={styles.image} />
+      <Image source={require(`../../assets/cars/${item.image}.png}`)} style={styles.image} />
 
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 0.7, justifyContent: 'center'}}>
@@ -110,23 +110,23 @@ export default function HomeScreen({ navigation }: any){
 
   const [data, setData] = useState<any>([]);
 
-useEffect(() => {
-  //Get Values from database
-  axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/' + 'Copenhagen')
-  .then((response) => {
-      // Store Values in Temporary Array
-  let newArray: ItemData[] = response.data.map((item: { id: any, price: any, brand: any, model: any,
-        transmission: any, seats: any, image: any}) => {
-        return {id: item.id, price: item.price, brand: item.brand, model: item.model,
-          transmission: item.transmission, seats: item.seats, image: item.image}
+  useEffect(() => {
+    //Get Values from database
+    axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/' + 'Copenhagen')
+    .then((response) => {
+        // Store Values in Temporary Array
+        let newArray: ItemData[] = response.data.map((item: { id: any, price: any, brand: any, model: any,
+          transmission: any, seats: any, image: any}) => {
+          return {id: item.id, price: item.price, brand: item.brand, model: item.model,
+            transmission: item.transmission, seats: item.seats, image: item.image}
+        })
+        //Set Data Variable
+        setData(newArray)
       })
-      //Set Data Variable
-      setData(newArray)
-    })
-    .catch((e) => {
-      console.log(e)
-    })}
-,[])
+      .catch((e) => {
+        console.log(e)
+      })}
+  ,[])
 
 // ===============================================================================================================
   

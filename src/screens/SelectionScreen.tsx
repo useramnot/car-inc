@@ -41,8 +41,8 @@ export default function SelectionScreen({ navigation }: any) {
     axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/cities')
     .then((response) => {
         // Store Values in Temporary Array
-        let newArray = response.data.map((item: { city_id: any, city: any }) => {
-          return {key: item.city_id, value: item.city}
+        let newArray = response.data.map((item: { id: any, name: any }) => {
+          return {key: item.id, value: item.name}
         })
         //Set Data Variable
         setData(newArray)
