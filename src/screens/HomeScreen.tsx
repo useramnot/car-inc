@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import axios from 'axios'
+import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image} from 'react-native'
 // import { NavigationContainer, useNavigation } from '@react-navigation/native'
 
@@ -12,35 +13,36 @@ type ItemData = {
   image: any
 }
 
-const DATA: ItemData[] = [
-  {  
-    id: '1',
-    price: 376.91,
-    brand: "Kia",
-    model: "Ceed",
-    transmission: "Automatic",
-    seats: 5,
-    image: require('../../assets/cars/kia-ceed.png')
-  },
-  {
-    id: '2',
-    price: 21.37,
-    brand: "Volkswagen",
-    model: "Passat",
-    transmission: "Manual",
-    seats: 5,
-    image: require('../../assets/cars/volkswagen-passat.png')
-  },
-  {  
-    id: '3',
-    price: 846.05,
-    brand: "Toyota",
-    model: "Rav4",
-    transmission: "Automatic",
-    seats: 5,
-    image: require('../../assets/cars/toyota-rav4.png')
-  }
-]
+// const DATA: ItemData[] = [
+//   {  
+//     id: '1',
+//     price: 376.91,
+//     brand: "Kia",
+//     model: "Ceed",
+//     transmission: "Automatic",
+//     seats: 5,
+//     image: require('../../assets/cars/kia-ceed.png')
+//   },
+//   {
+//     id: '2',
+//     price: 21.37,
+//     brand: "Volkswagen",
+//     model: "Passat",
+//     transmission: "Manual",
+//     seats: 5,
+//     image: require('../../assets/cars/volkswagen-passat.png')
+//   },
+//   {  
+//     id: '3',
+//     price: 846.05,
+//     brand: "Toyota",
+//     model: "Rav4",
+//     transmission: "Automatic",
+//     seats: 5,
+//     image: require('../../assets/cars/toyota-rav4.png')
+//   }
+// ]
+
 
 type ItemProps = {
   item: ItemData
@@ -103,6 +105,30 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
 export default function HomeScreen({ navigation }: any){
   
   const [selectedId, setSelectedId] = useState<string>()
+
+// ===============================================================================================================
+
+  const [data, setData] = useState<any>([]);
+
+useEffect(() => {
+  //Get Values from database
+  axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/cities')
+  .then((response) => {
+      // Store Values in Temporary Array
+  let newArray: ItemData[] = response.data.map((item: { id: any, city_id/* price */: any, city/* brand */: any, model: any,
+        transmission: any, seats: any, image: any}) => {
+        return {id: item.id, price: item.city_id/* price */, brand: item.city/* brand */, model: item.model,
+          transmission: item.transmission, seats: item.seats, image: item.image}
+      })
+      //Set Data Variable
+      setData(newArray)
+    })
+    .catch((e) => {
+      console.log(e)
+    })}
+,[])
+
+// ===============================================================================================================
   
   const renderItem = ({item}: {item: ItemData}) => {
     return(
@@ -119,7 +145,7 @@ export default function HomeScreen({ navigation }: any){
   return(
     <FlatList style={styles.container}
       overScrollMode='never'
-      data={DATA}
+      data={data}
       keyExtractor={item => item.id}
       renderItem={renderItem}
     />
