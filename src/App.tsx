@@ -12,7 +12,7 @@ import BookingScreen from './screens/BookingScreen'
 
 const Stack = createStackNavigator()
 
-export default function App() {
+export default function App({ route }: any) {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -24,9 +24,9 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          // options={({route})=>{(
-          //   title: route.params.cities[route.params.selected - 1].value
-          // )}}
+          options={({ route }: any) => ({
+            title: route.params.cities[route.params.selected - 1].value,
+          })}
         />
         <Stack.Screen name="CarDetails" component={CarDetailsScreen} />
         <Stack.Screen name="Booking" component={BookingScreen} />

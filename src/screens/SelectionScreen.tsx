@@ -38,7 +38,7 @@ export default function SelectionScreen({ navigation }: any) {
       .catch((result) => setError(true))
   }, [])
 
-  if (selected === undefined) {
+  if (selected === 0) {
     // () => setDisableSearch(false)
     disableSearch = true
     buttonBG = '#434343'
