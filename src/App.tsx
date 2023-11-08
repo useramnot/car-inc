@@ -7,8 +7,7 @@ import SelectionScreen from './screens/SelectionScreen'
 import HomeScreen from './screens/HomeScreen'
 import CarDetailsScreen from './screens/CarDetailsScreen'
 import BookingScreen from './screens/BookingScreen'
-
-// import {selected} from './screens/SelectionScreen'
+import ConfirmationScreen from './screens/ConfirmationScreen'
 
 const Stack = createStackNavigator()
 
@@ -28,8 +27,15 @@ export default function App({ route }: any) {
             title: route.params.cities[route.params.selected - 1].value,
           })}
         />
-        <Stack.Screen name="CarDetails" component={CarDetailsScreen} />
+        <Stack.Screen
+          name="CarDetails"
+          component={CarDetailsScreen}
+          options={({ route }: any) => ({
+            title: route.params.item.brand + ' ' + route.params.item.model,
+          })}
+        />
         <Stack.Screen name="Booking" component={BookingScreen} />
+        <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

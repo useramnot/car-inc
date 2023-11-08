@@ -113,8 +113,8 @@ export default function HomeScreen({ navigation }: any) {
       <Item
         item={item}
         // onPress={() => setSelectedId(item.id)}
-        onPress={() => navigation.navigate('CarDetails')}
-        onPressSelect={() => navigation.navigate('Booking')}
+        onPress={() => navigation.navigate('CarDetails', { item })}
+        onPressSelect={() => navigation.navigate('Booking', { item })}
         backgroundColor={item.id === selectedId ? '#ddd' : '#fff'}
       />
     )
