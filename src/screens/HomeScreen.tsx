@@ -13,7 +13,6 @@ type ItemData = {
   brand: string
   transmission: string
   seats: number
-  image: any
 }
 
 type ItemProps = {
