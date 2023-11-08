@@ -14,6 +14,7 @@ export default function SelectionScreen({ navigation }: any) {
   const [selected, setSelected] = useState()
 
   const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
   
   // const [disableSearch, setDisableSearch] = useState(true)
   let [disableSearch] = useState(false)
@@ -30,11 +31,10 @@ export default function SelectionScreen({ navigation }: any) {
         })
         //Set Data Variable
         setData(newArray)
+        setError(false)
       })
-      .catch((e) => {
-        console.log(e)
-      })}
-  ,[])
+      .catch(result => setError(true))
+    },[])
 
 
   if (selected === undefined) {

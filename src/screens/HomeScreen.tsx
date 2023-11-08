@@ -76,10 +76,10 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
 
 export default function HomeScreen({ navigation }: any){
 
-  const[carData, setCarData] = useState<ItemData[] | undefined>()
-  const [error, setError] = useState(false);
-
   const [selectedId, setSelectedId] = useState<string>()
+  
+  const [error, setError] = useState(false);
+  const[carData, setCarData] = useState<ItemData[] | undefined>()
   
   useEffect(() => {
     axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/' + 'Odense')
