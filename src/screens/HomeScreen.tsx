@@ -38,7 +38,10 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
     underlayColor={'#eee'}
   >
     <View>
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+      <View
+        id="Top part"
+        style={{ flexDirection: 'row', justifyContent: 'center' }}
+      >
         <View style={{ flex: 0.5, alignItems: 'flex-start' }}>
           <Text style={styles.model}>{item.model}</Text>
           <Text style={{ fontSize: 24 }}>{item.brand}</Text>
@@ -55,16 +58,17 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
 
       <Image source={imageSelect(item.model)} style={styles.image} />
 
-      <View style={{ flexDirection: 'row', marginTop: 5 }}>
+      <View id="Bottom part" style={{ flexDirection: 'row', marginTop: 5 }}>
         <View style={{ flex: 0.7, justifyContent: 'center' }}>
           <Text style={{ fontSize: 28 }}>
             {/* <Text style={{fontSize: 20}}>From: </Text> */}
             {item.price}
-            <Text style={{ fontSize: 22 }}> kr</Text>
+            <Text style={{ fontSize: 22 }}> kr/day</Text>
           </Text>
         </View>
 
         <View
+          id="Select button"
           style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}
         >
           <TouchableHighlight
@@ -142,7 +146,6 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
-    backgroundColor: '#fff',
     borderRadius: 10,
   },
 

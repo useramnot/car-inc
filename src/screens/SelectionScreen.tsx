@@ -28,11 +28,12 @@ export default function SelectionScreen({ navigation }: any) {
       )
       .then((response) => {
         // Store Values in Temporary Array
-        let newArray = response.data.map((item: { id: any; name: any }) => {
+        let citiesArray = response.data.map((item: any) => {
           return { key: item.id, value: item.name }
         })
+
         //Set Data Variable
-        setCities(newArray)
+        setCities(citiesArray)
         setError(false)
       })
       .catch((result) => setError(true))
