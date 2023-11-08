@@ -1,15 +1,10 @@
-<<<<<<< Updated upstream
-import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image} from 'react-native'
 // import { NavigationContainer, useNavigation } from '@react-navigation/native'
-=======
-import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import axios from "axios"
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import imageSelect from '../../assets/cars/searchImage';
 
->>>>>>> Stashed changes
 
 type ItemData = {
   id: string
@@ -21,40 +16,6 @@ type ItemData = {
   image: any
 }
 
-<<<<<<< Updated upstream
-// const DATA: ItemData[] = [
-//   {  
-//     id: '1',
-//     price: 376.91,
-//     brand: "Kia",
-//     model: "Ceed",
-//     transmission: "Automatic",
-//     seats: 5,
-//     image: require('../../assets/cars/kia-ceed.png')
-//   },
-//   {
-//     id: '2',
-//     price: 21.37,
-//     brand: "Volkswagen",
-//     model: "Passat",
-//     transmission: "Manual",
-//     seats: 5,
-//     image: require('../../assets/cars/volkswagen-passat.png')
-//   },
-//   {  
-//     id: '3',
-//     price: 846.05,
-//     brand: "Toyota",
-//     model: "Rav4",
-//     transmission: "Automatic",
-//     seats: 5,
-//     image: require('../../assets/cars/toyota-rav4.png')
-//   }
-// ]
-
-
-=======
->>>>>>> Stashed changes
 type ItemProps = {
   item: ItemData
   onPress: () => void
@@ -84,11 +45,7 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
         </View>
       </View>
 
-<<<<<<< Updated upstream
-      <Image source={require(`../../assets/cars/${item.image}.png}`)} style={styles.image} />
-=======
       <Image source={imageSelect(item.model)} style={styles.image} />
->>>>>>> Stashed changes
 
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 0.7, justifyContent: 'center'}}>
@@ -117,42 +74,13 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
 )
 
 
-<<<<<<< Updated upstream
 export default function HomeScreen({ navigation }: any){
-  
-  const [selectedId, setSelectedId] = useState<string>()
-
-// ===============================================================================================================
-
-  const [data, setData] = useState<any>([]);
-
-  useEffect(() => {
-    //Get Values from database
-    axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/' + 'Copenhagen')
-    .then((response) => {
-        // Store Values in Temporary Array
-        let newArray: ItemData[] = response.data.map((item: { id: any, price: any, brand: any, model: any,
-          transmission: any, seats: any, image: any}) => {
-          return {id: item.id, price: item.price, brand: item.brand, model: item.model,
-            transmission: item.transmission, seats: item.seats, image: item.image}
-        })
-        //Set Data Variable
-        setData(newArray)
-      })
-      .catch((e) => {
-        console.log(e)
-      })}
-  ,[])
-
-// ===============================================================================================================
-=======
-
-export default function HomeScreen(){
 
   const[carData, setCarData] = useState<ItemData[] | undefined>()
   const [error, setError] = useState(false);
 
   const [selectedId, setSelectedId] = useState<string>()
+  
   useEffect(() => {
     axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/' + 'Odense')
     .then(result => {
@@ -166,7 +94,6 @@ export default function HomeScreen(){
   },[])
   
   
->>>>>>> Stashed changes
   
   const renderItem = ({item}: {item: ItemData}) => {
     return(
@@ -181,15 +108,6 @@ export default function HomeScreen(){
   }
 
   return(
-<<<<<<< Updated upstream
-    <FlatList style={styles.container}
-      overScrollMode='never'
-      data={data}
-      keyExtractor={item => item.id}
-      renderItem={renderItem}
-    />
-  )
-=======
         <FlatList style={styles.container}
           overScrollMode='never'
           data={carData}
@@ -197,7 +115,6 @@ export default function HomeScreen(){
           renderItem={renderItem}
         />
     )
->>>>>>> Stashed changes
 }
 
 
