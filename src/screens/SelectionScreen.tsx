@@ -5,10 +5,13 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native"
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { SelectList } from 'react-native-dropdown-select-list'
+<<<<<<< Updated upstream
 import axios from 'axios'
 // import CarsData from './'  // @TODO
 
 // export const [selected, setSelected] = useState()
+=======
+>>>>>>> Stashed changes
 
 export default function SelectionScreen({ navigation }: any) {  
   
@@ -21,10 +24,14 @@ export default function SelectionScreen({ navigation }: any) {
   // const [disableSearch, setDisableSearch] = useState(true)
   let [disableSearch] = useState(false)
 
+<<<<<<< Updated upstream
   let [buttonBG] = useState('#000')
 
   //const CarData = require('../../data/db')
+=======
+>>>>>>> Stashed changes
 
+  
 
   // =================================================================
   // const DATA = [

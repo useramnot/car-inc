@@ -1,7 +1,15 @@
+<<<<<<< Updated upstream
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight, Image} from 'react-native'
 // import { NavigationContainer, useNavigation } from '@react-navigation/native'
+=======
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
+import axios from "axios"
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import imageSelect from '../../assets/cars/searchImage';
+
+>>>>>>> Stashed changes
 
 type ItemData = {
   id: string
@@ -13,6 +21,7 @@ type ItemData = {
   image: any
 }
 
+<<<<<<< Updated upstream
 // const DATA: ItemData[] = [
 //   {  
 //     id: '1',
@@ -44,6 +53,8 @@ type ItemData = {
 // ]
 
 
+=======
+>>>>>>> Stashed changes
 type ItemProps = {
   item: ItemData
   onPress: () => void
@@ -73,7 +84,11 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
         </View>
       </View>
 
+<<<<<<< Updated upstream
       <Image source={require(`../../assets/cars/${item.image}.png}`)} style={styles.image} />
+=======
+      <Image source={imageSelect(item.model)} style={styles.image} />
+>>>>>>> Stashed changes
 
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 0.7, justifyContent: 'center'}}>
@@ -102,6 +117,7 @@ const Item = ({item, onPress, onPressSelect, backgroundColor}: ItemProps) => (
 )
 
 
+<<<<<<< Updated upstream
 export default function HomeScreen({ navigation }: any){
   
   const [selectedId, setSelectedId] = useState<string>()
@@ -129,6 +145,28 @@ export default function HomeScreen({ navigation }: any){
   ,[])
 
 // ===============================================================================================================
+=======
+
+export default function HomeScreen(){
+
+  const[carData, setCarData] = useState<ItemData[] | undefined>()
+  const [error, setError] = useState(false);
+
+  const [selectedId, setSelectedId] = useState<string>()
+  useEffect(() => {
+    axios.get('https://my-json-server.typicode.com/MetaSoc/car-inc-database/' + 'Odense')
+    .then(result => {
+      //console.log("Got cars " + res.data)
+      setCarData(result.data)
+      //AsyncStorage.setItem("people", JSON.stringify(res.data))
+        // .catch(error => console.log(error))
+      setError(false)
+    })
+    .catch(result => setError(true))
+  },[])
+  
+  
+>>>>>>> Stashed changes
   
   const renderItem = ({item}: {item: ItemData}) => {
     return(
@@ -143,6 +181,7 @@ export default function HomeScreen({ navigation }: any){
   }
 
   return(
+<<<<<<< Updated upstream
     <FlatList style={styles.container}
       overScrollMode='never'
       data={data}
@@ -150,6 +189,15 @@ export default function HomeScreen({ navigation }: any){
       renderItem={renderItem}
     />
   )
+=======
+        <FlatList style={styles.container}
+          overScrollMode='never'
+          data={carData}
+          keyExtractor={item => item.id}
+          renderItem={renderItem}
+        />
+    )
+>>>>>>> Stashed changes
 }
 
 
