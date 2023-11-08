@@ -16,15 +16,23 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='Selection' component={SelectionScreen} 
-          options={{headerShown: false}} />
-        <Stack.Screen name='Home' component={HomeScreen} 
-          /*options={{headerTitle: `${selected}`}}*/ />
-        <Stack.Screen name='CarDetails' component={CarDetailsScreen} />
-        <Stack.Screen name='Booking' component={BookingScreen} />
+        <Stack.Screen
+          name="Selection"
+          component={SelectionScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          // options={({route})=>{(
+          //   title: route.params.cities[route.params.selected - 1].value
+          // )}}
+        />
+        <Stack.Screen name="CarDetails" component={CarDetailsScreen} />
+        <Stack.Screen name="Booking" component={BookingScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -32,6 +40,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+    justifyContent: 'center',
+  },
+})
