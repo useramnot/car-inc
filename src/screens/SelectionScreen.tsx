@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 50,
     borderColor: '#000',
-    borderRadius: 20,
+    borderRadius: 100,
     borderWidth: 2,
   },
 
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 
   button: {
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 100,
     justifyContent: 'center',
     margin: 10,
     width: '75%',

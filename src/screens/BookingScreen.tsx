@@ -1,14 +1,8 @@
 import React, { useState } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TextInput,
-} from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, TextInput, NativeEventEmitter} from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import imageSelect from '../../assets/cars/searchImage'
+// import DatePicker from 'react-native-date-picker'
 
 export default function BookingScreen({ navigation }: any) {
   const route = useRoute<any>()
@@ -19,6 +13,9 @@ export default function BookingScreen({ navigation }: any) {
   //   const [lastName, setLastName] = useState('')
   //   const [email, setEmail] = useState('')
 
+
+  // const [birthDate, setBirthDate] = useState(new Date())
+
   let firstName = ''
   let setFirstName = (value: any) => {
     firstName = value
@@ -26,6 +23,25 @@ export default function BookingScreen({ navigation }: any) {
   let lastName = ''
   let setLastName = (value: any) => {
     lastName = value
+  }
+  let birthDate = ''
+  let setBirthDate = (value: any) => {
+    // console.log(Object.keys(value))
+    // console.log(Object.values(value))
+    // let result = Object.values(value.values)
+    const regexddmmyyyy: RegExp = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[0-2])[- /.](19|20)\d\d$/
+    // let valueStr = ''
+    // valueStr = value.
+    // Object.values()
+    //console.log(value)
+    
+    if (regexddmmyyyy.test(value)){
+      birthDate = value
+      console.log('valid DATE')
+    }
+    else{
+      console.log('ERROR invalid date')
+    }
   }
   let email = ''
   let setEmail = (value: any) => {
@@ -85,10 +101,10 @@ export default function BookingScreen({ navigation }: any) {
               placeholder="Last name*"
             />
             <Input
-              id="E-mail"
+              id="Email"
               onEndEditing={setEmail}
               //   value={email}
-              placeholder="E-mail*"
+              placeholder="Email*"
             />
           </View>
         </ScrollView>
