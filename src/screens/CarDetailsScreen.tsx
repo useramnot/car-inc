@@ -8,7 +8,9 @@ export default function CarDetailsScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.details}>
-        <Text style={{ marginLeft: 10, fontSize: 20 }}>Additional information:</Text>
+        <Text style={{ marginLeft: 10, fontSize: 20 }}>
+          Additional information:
+        </Text>
         <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
           <Text style={styles.textStyle}>Smoke Free</Text>
           <Text style={styles.textStyle}>{item.seats} seats</Text>

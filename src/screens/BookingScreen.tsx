@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, NativeEventEmitter} from 'react-native'
 import { useRoute } from '@react-navigation/native'
-import imageSelect from '../../assets/cars/searchImage'
+import React from 'react'
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
+import imageSelect from '../../assets/cars/searchImage'
 // import DatePicker from 'react-native-date-picker'
 
 export default function BookingScreen({ navigation }: any) {
@@ -13,7 +20,6 @@ export default function BookingScreen({ navigation }: any) {
   //   const [firstName, setFirstName] = useState('')
   //   const [lastName, setLastName] = useState('')
   //   const [email, setEmail] = useState('')
-
 
   // const [birthDate, setBirthDate] = useState(new Date())
 
@@ -30,17 +36,17 @@ export default function BookingScreen({ navigation }: any) {
     // console.log(Object.keys(value))
     // console.log(Object.values(value))
     // let result = Object.values(value.values)
-    const regexddmmyyyy: RegExp = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[0-2])[- /.](19|20)\d\d$/
+    const regexddmmyyyy: RegExp =
+      /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[0-2])[- /.](19|20)\d\d$/
     // let valueStr = ''
     // valueStr = value.
     // Object.values()
     //console.log(value)
-    
-    if (regexddmmyyyy.test(value)){
+
+    if (regexddmmyyyy.test(value)) {
       birthDate = value
       console.log('valid DATE')
-    }
-    else{
+    } else {
       console.log('ERROR invalid date')
     }
   }
@@ -79,7 +85,7 @@ export default function BookingScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.carOverview}>
-          <Image source={imageSelect(item.model)} style={styles.image} />
+        <Image source={imageSelect(item.model)} style={styles.image} />
         <Text style={{ fontSize: 22, marginHorizontal: 6 }}>
           {item.price}
           <Text style={{ fontSize: 15 }}> kr/day</Text>
@@ -119,19 +125,18 @@ export default function BookingScreen({ navigation }: any) {
               //   value={email}
               placeholder="Return date*"
             />
-          </View>      
-        </ScrollView>        
+          </View>
+        </ScrollView>
       </View>
       <TouchableHighlight
         style={styles.button}
         delayPressOut={400}
         underlayColor="#444"
-        onPress={()=> navigation.navigate("Confirmation")}        
+        onPress={() => navigation.navigate('Confirmation')}
       >
         <Text style={styles.buttontext}>Book</Text>
       </TouchableHighlight>
     </View>
-    
   )
 }
 
@@ -179,7 +184,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
     marginHorizontal: 10,
-    paddingVertical: 10
+    paddingVertical: 10,
   },
 
   textInput: {
@@ -190,22 +195,22 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginHorizontal: 10,
     marginTop: 15,
-    padding: 10
+    padding: 10,
   },
 
-  button:{
-    alignSelf: "center",
-    justifyContent: "center",
+  button: {
+    alignSelf: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "#000",    
-    width: "40%",
+    backgroundColor: '#000',
+    width: '40%',
     borderRadius: 25,
     height: 45,
-    marginBottom: 5
+    marginBottom: 5,
   },
 
   buttontext: {
     color: '#fff',
     fontSize: 16,
-  }
+  },
 })

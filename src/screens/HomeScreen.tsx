@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  StatusBar,
-  TouchableHighlight,
-  Image,
-} from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+} from 'react-native'
 import imageSelect from '../../assets/cars/searchImage'
 
 type ItemData = {
@@ -38,7 +37,7 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
     <View>
       <View
         id="Top part"
-        style={{ flexDirection: 'row', justifyContent: 'center'}}
+        style={{ flexDirection: 'row', justifyContent: 'center' }}
       >
         <View style={{ flex: 0.5, alignItems: 'flex-start' }}>
           <Text style={{ fontSize: 14 }}>{item.model}</Text>
@@ -121,7 +120,6 @@ export default function HomeScreen({ navigation }: any) {
   )
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -133,13 +131,13 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 20,
     borderRadius: 10,
-    elevation: 5
+    elevation: 5,
   },
   image: {
     width: '100%',
     height: 140,
     resizeMode: 'contain',
-    marginTop: 5
+    marginTop: 5,
   },
   button: {
     alignItems: 'center',
@@ -153,6 +151,6 @@ const styles = StyleSheet.create({
   buttontext: {
     color: '#fff',
     fontSize: 14,
-    margin: 8
-  }
+    margin: 8,
+  },
 })

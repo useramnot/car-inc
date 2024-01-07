@@ -1,10 +1,9 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
-import { SelectList } from 'react-native-dropdown-select-list'
 import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
+import { SelectList } from 'react-native-dropdown-select-list'
 
-export default function SelectionScreen({ navigation }: any) {
+export default function CitySelectionScreen({ navigation }: any) {
   const [cities, setCities] = useState<any>([])
   const [selected, setSelected] = useState(0)
   const [error, setError] = useState(false)
@@ -67,12 +66,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   image: {
     alignSelf: 'center',
     resizeMode: 'contain',
-    width: '50%'
+    width: '50%',
   },
   boxStyles: {
     justifyContent: 'center',
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     borderRadius: 100,
     borderWidth: 2,
-    elevation: 5
+    elevation: 5,
   },
   dropdownStyles: {
     borderColor: '#000',
@@ -97,11 +96,11 @@ const styles = StyleSheet.create({
     margin: 10,
     width: '75%',
     height: 48,
-    elevation: 5
+    elevation: 5,
   },
   buttontext: {
     color: '#fff',
     fontSize: 14,
-    margin: 10
+    margin: 10,
   },
 })

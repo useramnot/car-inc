@@ -1,13 +1,13 @@
-import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { StyleSheet } from 'react-native'
 import 'react-native-gesture-handler'
 
-import SelectionScreen from './screens/SelectionScreen'
-import HomeScreen from './screens/HomeScreen'
-import CarDetailsScreen from './screens/CarDetailsScreen'
 import BookingScreen from './screens/BookingScreen'
+import CarDetailsScreen from './screens/CarDetailsScreen'
+import CitySelectionScreen from './screens/CitySelectionScreen'
 import ConfirmationScreen from './screens/ConfirmationScreen'
+import HomeScreen from './screens/HomeScreen'
 
 const Stack = createStackNavigator()
 
@@ -17,7 +17,7 @@ export default function App({ route }: any) {
       <Stack.Navigator>
         <Stack.Screen
           name="Selection"
-          component={SelectionScreen}
+          component={CitySelectionScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -28,13 +28,13 @@ export default function App({ route }: any) {
             headerStyle: { shadowColor: '#000' },
             cardStyle: { backgroundColor: '#fff' },
           })}
-          />
+        />
         <Stack.Screen
           name="CarDetails"
           component={CarDetailsScreen}
           options={({ route }: any) => ({
             title: route.params.item.brand + ' ' + route.params.item.model,
-            headerStyle: { shadowColor: '#000' }
+            headerStyle: { shadowColor: '#000' },
           })}
         />
         <Stack.Screen name="Booking" component={BookingScreen} />
@@ -53,9 +53,12 @@ const styles = StyleSheet.create({
   },
   shadow: {
     shadowColor: '#000',
-    elevation: 10
+    elevation: 10,
   },
   headerShadow: {
-    shadowOffset: {width: 0, height: 0}, shadowColor: '#000', shadowRadius: 1, shadowOpacity: 0.5
-  }
+    shadowOffset: { width: 0, height: 0 },
+    shadowColor: '#000',
+    shadowRadius: 1,
+    shadowOpacity: 0.5,
+  },
 })
