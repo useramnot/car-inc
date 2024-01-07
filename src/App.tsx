@@ -25,13 +25,16 @@ export default function App({ route }: any) {
           component={HomeScreen}
           options={({ route }: any) => ({
             title: route.params.cities[route.params.selected - 1].value,
+            headerStyle: { shadowColor: '#000' },
+            cardStyle: { backgroundColor: '#fff' },
           })}
-        />
+          />
         <Stack.Screen
           name="CarDetails"
           component={CarDetailsScreen}
           options={({ route }: any) => ({
             title: route.params.item.brand + ' ' + route.params.item.model,
+            headerStyle: { shadowColor: '#000' }
           })}
         />
         <Stack.Screen name="Booking" component={BookingScreen} />
@@ -48,4 +51,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  shadow: {
+    shadowColor: '#000',
+    elevation: 10
+  },
+  headerShadow: {
+    shadowOffset: {width: 0, height: 0}, shadowColor: '#000', shadowRadius: 1, shadowOpacity: 0.5
+  }
 })

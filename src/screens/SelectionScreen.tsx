@@ -1,23 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
-import { NavigationContainer, useNavigation } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 import { SelectList } from 'react-native-dropdown-select-list'
 import axios from 'axios'
 
 export default function SelectionScreen({ navigation }: any) {
-  const [searchText, setSearchText] = useState()
-
-  const [selected, setSelected] = useState(0)
   const [cities, setCities] = useState<any>([])
-
+  const [selected, setSelected] = useState(0)
   const [error, setError] = useState(false)
 
-  // const [disableSearch, setDisableSearch] = useState(true)
   let [disableSearch] = useState(false)
-
   let [buttonBG] = useState('#000')
 
   useEffect(() => {
@@ -31,7 +23,6 @@ export default function SelectionScreen({ navigation }: any) {
         let citiesArray = response.data.map((item: any) => {
           return { key: item.id, value: item.name }
         })
-
         //Set Data Variable
         setCities(citiesArray)
         setError(false)
@@ -40,12 +31,9 @@ export default function SelectionScreen({ navigation }: any) {
   }, [])
 
   if (selected === 0) {
-    // () => setDisableSearch(false)
     disableSearch = true
     buttonBG = '#434343'
   }
-
-  // console.log(cities[selected-1].value)
 
   return (
     <View style={styles.container}>
@@ -55,12 +43,11 @@ export default function SelectionScreen({ navigation }: any) {
           data={cities}
           boxStyles={styles.boxStyles}
           dropdownStyles={styles.dropdownStyles}
-          placeholder="Pick a city"
-          searchPlaceholder="Pick a city"
+          placeholder="Select a city"
+          searchPlaceholder="Select a city"
           setSelected={setSelected}
         />
       </View>
-
       <TouchableHighlight
         onPress={() => navigation.navigate('Home', { cities, selected })}
         style={[styles.button, { backgroundColor: buttonBG }]}
@@ -80,27 +67,29 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
-
   image: {
     alignSelf: 'center',
     resizeMode: 'contain',
-    width: '50%',
+    width: '50%'
   },
-
   boxStyles: {
     justifyContent: 'center',
     padding: 50,
+    backgroundColor: '#fff',
     borderColor: '#000',
     borderRadius: 100,
     borderWidth: 2,
+    elevation: 5
   },
-
   dropdownStyles: {
-    // @TODO something
+    borderColor: '#000',
+    borderWidth: 2,
+    backgroundColor: '#fff',
+    elevation: 5,
+    borderRadius: 25,
   },
-
   button: {
     alignItems: 'center',
     borderRadius: 100,
@@ -108,11 +97,11 @@ const styles = StyleSheet.create({
     margin: 10,
     width: '75%',
     height: 48,
+    elevation: 5
   },
-
   buttontext: {
     color: '#fff',
-    fontSize: 18,
-    margin: 10,
+    fontSize: 14,
+    margin: 10
   },
 })

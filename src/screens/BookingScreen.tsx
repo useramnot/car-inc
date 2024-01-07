@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, Image, ScrollView, TextInput, NativeEventEmitter} from 'react-native'
 import { useRoute } from '@react-navigation/native'
 import imageSelect from '../../assets/cars/searchImage'
+import { TouchableHighlight } from 'react-native-gesture-handler'
 // import DatePicker from 'react-native-date-picker'
 
 export default function BookingScreen({ navigation }: any) {
@@ -24,7 +25,7 @@ export default function BookingScreen({ navigation }: any) {
   let setLastName = (value: any) => {
     lastName = value
   }
-  let birthDate = ''
+  let birthDate = '' // TO BE DELETED
   let setBirthDate = (value: any) => {
     // console.log(Object.keys(value))
     // console.log(Object.values(value))
@@ -46,6 +47,11 @@ export default function BookingScreen({ navigation }: any) {
   let email = ''
   let setEmail = (value: any) => {
     email = value
+  }
+
+  let returnDate = ''
+  let setReturnDate = (value: any) => {
+    returnDate = value
   }
 
   type InputProps = {
@@ -73,9 +79,10 @@ export default function BookingScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.carOverview}>
-        <Image source={imageSelect(item.model)} style={styles.image} />
-        <Text style={{ fontSize: 26, marginHorizontal: 10 }}>
-          {item.price} kr
+          <Image source={imageSelect(item.model)} style={styles.image} />
+        <Text style={{ fontSize: 22, marginHorizontal: 6 }}>
+          {item.price}
+          <Text style={{ fontSize: 15 }}> kr/day</Text>
         </Text>
       </View>
       <View style={styles.information}>
@@ -106,10 +113,25 @@ export default function BookingScreen({ navigation }: any) {
               //   value={email}
               placeholder="Email*"
             />
-          </View>
-        </ScrollView>
+            <Input
+              id="Email"
+              onEndEditing={setEmail}
+              //   value={email}
+              placeholder="Return date*"
+            />
+          </View>      
+        </ScrollView>        
       </View>
+      <TouchableHighlight
+        style={styles.button}
+        delayPressOut={400}
+        underlayColor="#444"
+        onPress={()=> navigation.navigate("Confirmation")}        
+      >
+        <Text style={styles.buttontext}>Book</Text>
+      </TouchableHighlight>
     </View>
+    
   )
 }
 
@@ -121,13 +143,13 @@ const styles = StyleSheet.create({
 
   carOverview: {
     flex: 0.18,
-    // alignSelf: 'flex-end',
+    //alignSelf: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
     borderRadius: 10,
-    marginHorizontal: 30,
+    marginHorizontal: 10,
     marginVertical: 10,
   },
 
@@ -147,7 +169,7 @@ const styles = StyleSheet.create({
   scrollView: {
     // flex: 1,
     // alignItems: 'center',
-    // justifyContent: 'center',
+    //justifyContent: 'center',
   },
 
   header: {
@@ -157,7 +179,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
     marginHorizontal: 10,
-    paddingVertical: 10,
+    paddingVertical: 10
   },
 
   textInput: {
@@ -168,6 +190,22 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginHorizontal: 10,
     marginTop: 15,
-    padding: 10,
+    padding: 10
   },
+
+  button:{
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: 'center',
+    backgroundColor: "#000",    
+    width: "40%",
+    borderRadius: 25,
+    height: 45,
+    marginBottom: 5
+  },
+
+  buttontext: {
+    color: '#fff',
+    fontSize: 16,
+  }
 })
