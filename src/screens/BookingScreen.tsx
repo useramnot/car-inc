@@ -23,7 +23,7 @@ export default function BookingScreen({ navigation }: any) {
 
   // const [birthDate, setBirthDate] = useState(new Date())
 
-  let firstName = ''
+  let firstName: any = ''
   let setFirstName = (value: any) => {
     firstName = value
   }
@@ -120,8 +120,8 @@ export default function BookingScreen({ navigation }: any) {
               placeholder="Email*"
             />
             <Input
-              id="Email"
-              onEndEditing={setEmail}
+              id="Return date"
+              onEndEditing={setReturnDate}
               //   value={email}
               placeholder="Return date*"
             />

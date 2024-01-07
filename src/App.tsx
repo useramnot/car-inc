@@ -3,11 +3,11 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { StyleSheet } from 'react-native'
 import 'react-native-gesture-handler'
 
+import CitySelectionScreen from './screens/CitySelectionScreen'
+import CarSelectionScreen from './screens/CarSelectionScreen'
 import BookingScreen from './screens/BookingScreen'
 import CarDetailsScreen from './screens/CarDetailsScreen'
-import CitySelectionScreen from './screens/CitySelectionScreen'
 import ConfirmationScreen from './screens/ConfirmationScreen'
-import HomeScreen from './screens/HomeScreen'
 
 const Stack = createStackNavigator()
 
@@ -16,13 +16,13 @@ export default function App({ route }: any) {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Selection"
+          name="CitySelection"
           component={CitySelectionScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="CarSelection"
+          component={CarSelectionScreen}
           options={({ route }: any) => ({
             title: route.params.cities[route.params.selected - 1].value,
             headerStyle: { shadowColor: '#000' },

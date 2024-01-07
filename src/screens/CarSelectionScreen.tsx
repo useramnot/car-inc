@@ -18,6 +18,9 @@ type ItemData = {
   brand: string
   transmission: string
   seats: number
+  doors: number
+  bags: number
+  ac: string
 }
 
 type ItemProps = {
@@ -77,7 +80,7 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
   </TouchableHighlight>
 )
 
-export default function HomeScreen({ navigation }: any) {
+export default function CarSelectionScreen({ navigation }: any) {
   const route = useRoute<any>()
   const cities = route.params?.cities
   const selected = route.params?.selected
