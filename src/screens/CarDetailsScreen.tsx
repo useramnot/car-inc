@@ -8,13 +8,14 @@ export default function CarDetailsScreen({ navigation }: any) {
   const city = route.params?.city
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1, justifyContent: 'center' }}>
+      <View style={{ justifyContent: 'center' }}>
         <View style={styles.topPart}>
           <Text
             style={{
               fontSize: 20,
               fontWeight: '600',
-              marginBottom: 40,
+              marginTop: 10,
+              marginBottom: 30,
             }}
           >
             Additional information:
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    justifyContent: 'center',
     padding: 20,
   },
   topPart: {
@@ -122,8 +124,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     width: '50%',
     height: 45,
-    marginTop: '-10%',
-    marginBottom: '70%',
+    marginTop: '10%',
+    marginBottom: '30%',
     elevation: 5,
   },
   buttontext: {

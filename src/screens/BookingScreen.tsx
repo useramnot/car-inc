@@ -9,8 +9,11 @@ import {
   View,
 } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
-import imageSelect from '../../assets/cars/searchImage'
-import DatePicker from 'react-native-modern-datepicker'
+import imageSelect from '../searchImage'
+import DatePicker, {
+  getToday,
+  getFormateDate,
+} from 'react-native-modern-datepicker'
 
 export default function BookingScreen({ navigation }: any) {
   const route = useRoute<any>()
@@ -193,10 +196,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#000',
-    width: '40%',
+    width: '50%',
     borderRadius: 25,
     height: 45,
-    marginBottom: 5,
+    marginBottom: '10%',
+    elevation: 5,
   },
 
   buttontext: {

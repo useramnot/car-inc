@@ -48,9 +48,9 @@ export default function CitySelectionScreen({ navigation }: any) {
         />
       </View>
       <TouchableHighlight
-        onPress={() =>
+        onPress={() => {
           navigation.navigate('CarSelection', { cities, selected })
-        }
+        }}
         style={[styles.button, { backgroundColor: buttonBG }]}
         activeOpacity={0.7}
         underlayColor="#434343"
@@ -98,8 +98,6 @@ const styles = StyleSheet.create({
     margin: 10,
     width: '75%',
     height: 48,
-    borderColor: '#000',
-    borderWidth: 2,
     elevation: 5,
   },
   buttontext: {

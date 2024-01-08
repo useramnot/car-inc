@@ -5,8 +5,8 @@ import 'react-native-gesture-handler'
 
 import CitySelectionScreen from './screens/CitySelectionScreen'
 import CarSelectionScreen from './screens/CarSelectionScreen'
-import BookingScreen from './screens/BookingScreen'
 import CarDetailsScreen from './screens/CarDetailsScreen'
+import BookingScreen from './screens/BookingScreen'
 import ConfirmationScreen from './screens/ConfirmationScreen'
 import ReceiptScreen from './screens/ReceiptScreen'
 
@@ -19,7 +19,9 @@ export default function App() {
         <Stack.Screen
           name="CitySelection"
           component={CitySelectionScreen}
-          options={{ headerShown: false }}
+          options={() => ({
+            headerShown: false,
+          })}
         />
         <Stack.Screen
           name="CarSelection"
@@ -45,8 +47,20 @@ export default function App() {
             headerStyle: { shadowColor: '#000' },
           })}
         />
-        <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
-        <Stack.Screen name="Receipt" component={ReceiptScreen} />
+        <Stack.Screen
+          name="Confirmation"
+          component={ConfirmationScreen}
+          options={() => ({
+            headerStyle: { shadowColor: '#000' },
+          })}
+        />
+        <Stack.Screen
+          name="Receipt"
+          component={ReceiptScreen}
+          options={() => ({
+            headerShown: false,
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

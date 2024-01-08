@@ -9,11 +9,11 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native'
-import imageSelect from '../../assets/cars/searchImage'
+import imageSelect from '../searchImage'
 
 type ItemData = {
   id: string
-  price: number
+  price: string
   model: string
   brand: string
   transmission: string
@@ -34,7 +34,7 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
   <TouchableHighlight
     onPress={onPress}
     style={[styles.item, { backgroundColor }]}
-    activeOpacity={0.5}
+    activeOpacity={0.7}
     delayPressOut={400}
     underlayColor={'#fff'}
   >
@@ -65,7 +65,11 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
         </View>
         <View
           id="Select button"
-          style={{ flex: 0.8, justifyContent: 'center', alignItems: 'center' }}
+          style={{
+            flex: 0.8,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
           <TouchableHighlight
             style={styles.button}
@@ -114,6 +118,7 @@ export default function CarSelectionScreen({ navigation }: any) {
 
   return (
     <FlatList
+      contentContainerStyle={{ paddingBottom: 20 }}
       style={styles.container}
       overScrollMode="never"
       data={carData}
@@ -127,11 +132,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginVertical: 10,
   },
   item: {
     padding: 20,
-    marginVertical: 10,
+    marginTop: 20,
     marginHorizontal: 20,
     borderRadius: 10,
     elevation: 5,
@@ -149,7 +153,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     width: '90%',
     height: 40,
-    elevation: 10,
   },
   buttontext: {
     color: '#fff',
