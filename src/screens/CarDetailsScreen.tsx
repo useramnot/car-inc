@@ -5,6 +5,7 @@ import { useRoute } from '@react-navigation/native'
 export default function CarDetailsScreen({ navigation }: any) {
   const route = useRoute<any>()
   const item = route.params?.item
+  const city = route.params?.city
   return (
     <View style={styles.container}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -78,9 +79,9 @@ export default function CarDetailsScreen({ navigation }: any) {
         style={styles.button}
         delayPressOut={400}
         underlayColor="#434343"
-        onPress={() => navigation.navigate('Booking', { item })}
+        onPress={() => navigation.navigate('Booking', { item, city })}
       >
-        <Text style={styles.buttontext}>Selectado</Text>
+        <Text style={styles.buttontext}>Select</Text>
       </TouchableHighlight>
     </View>
   )
@@ -90,10 +91,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    padding: 20,
   },
   topPart: {
     alignItems: 'center',
-    marginHorizontal: 20,
     padding: 10,
     justifyContent: 'center',
     backgroundColor: '#fff',
@@ -121,8 +122,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     width: '50%',
     height: 45,
-    marginTop: '-20%',
-    marginBottom: '50%',
+    marginTop: '-10%',
+    marginBottom: '70%',
+    elevation: 5,
   },
   buttontext: {
     color: '#fff',

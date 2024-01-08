@@ -2,31 +2,21 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 
-export default function ConfirmationScreen({ navigation }: any) {
+export default function ReceiptScreen({ navigation }: any) {
   const route = useRoute<any>()
-  const item = route.params?.item
-  const city = route.params?.city
+  //   const item = route.params?.item
+  //   const city = route.params?.city
 
   return (
     <View style={styles.container}>
-      <Text>City: {city}</Text>
+      <Text>Congratulations, PLACEHOLDER NAME!</Text>
+      <Text />
+      <Text>Your booking has been successfully registered.</Text>
+      <Text />
       <Text>
-        Car: {item.brand} {item.model}
+        The confirmation was sent to your email address: PLACEHOLDER EMAIL
       </Text>
       <Text />
-      <Text>First name: PLACEHOLDER</Text>
-      <Text>Last name: PLACEHOLDER</Text>
-      <Text>Email: PLACEHOLDER</Text>
-      <Text>Return Date: PLACEHOLDER</Text>
-      <Text />
-      <TouchableHighlight
-        style={styles.button}
-        delayPressOut={400}
-        underlayColor="#444"
-        onPress={() => navigation.navigate('Confirmation', { item, city })}
-      >
-        <Text style={styles.buttontext}>Book</Text>
-      </TouchableHighlight>
     </View>
   )
 }

@@ -35,6 +35,7 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
     onPress={onPress}
     style={[styles.item, { backgroundColor }]}
     activeOpacity={0.5}
+    delayPressOut={400}
     underlayColor={'#fff'}
   >
     <View>
@@ -82,8 +83,8 @@ const Item = ({ item, onPress, onPressSelect, backgroundColor }: ItemProps) => (
 
 export default function CarSelectionScreen({ navigation }: any) {
   const route = useRoute<any>()
-  const cities = route.params?.cities
-  const selected = route.params?.selected
+  const city = route.params?.cities[route.params?.selected - 1].value
+
   const [selectedId, setSelectedId] = useState<string>()
   const [error, setError] = useState(false)
   const [carData, setCarData] = useState<ItemData[] | undefined>()
@@ -91,8 +92,7 @@ export default function CarSelectionScreen({ navigation }: any) {
   useEffect(() => {
     axios
       .get(
-        'https://my-json-server.typicode.com/MetaSoc/car-inc-database/' +
-          cities[selected - 1].value
+        'https://my-json-server.typicode.com/MetaSoc/car-inc-database/' + city
       )
       .then((result) => {
         setCarData(result.data)
@@ -105,8 +105,8 @@ export default function CarSelectionScreen({ navigation }: any) {
     return (
       <Item
         item={item}
-        onPress={() => navigation.navigate('CarDetails', { item })}
-        onPressSelect={() => navigation.navigate('Booking', { item })}
+        onPress={() => navigation.navigate('CarDetails', { item, city })}
+        onPressSelect={() => navigation.navigate('Booking', { item, city })}
         backgroundColor={item.id === selectedId ? '#ddd' : '#fff'}
       />
     )
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 140,
     resizeMode: 'contain',
-    marginTop: 5,
+    marginVertical: 11,
   },
   button: {
     alignItems: 'center',

@@ -8,10 +8,11 @@ import CarSelectionScreen from './screens/CarSelectionScreen'
 import BookingScreen from './screens/BookingScreen'
 import CarDetailsScreen from './screens/CarDetailsScreen'
 import ConfirmationScreen from './screens/ConfirmationScreen'
+import ReceiptScreen from './screens/ReceiptScreen'
 
 const Stack = createStackNavigator()
 
-export default function App({ route }: any) {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -37,28 +38,35 @@ export default function App({ route }: any) {
             headerStyle: { shadowColor: '#000' },
           })}
         />
-        <Stack.Screen name="Booking" component={BookingScreen} />
+        <Stack.Screen
+          name="Booking"
+          component={BookingScreen}
+          options={() => ({
+            headerStyle: { shadowColor: '#000' },
+          })}
+        />
         <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+        <Stack.Screen name="Receipt" component={ReceiptScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  shadow: {
-    shadowColor: '#000',
-    elevation: 10,
-  },
-  headerShadow: {
-    shadowOffset: { width: 0, height: 0 },
-    shadowColor: '#000',
-    shadowRadius: 1,
-    shadowOpacity: 0.5,
-  },
+  // container: {
+  //   flex: 1,
+  //   backgroundColor: '#000',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // shadow: {
+  //   shadowColor: '#000',
+  //   elevation: 10,
+  // },
+  // headerShadow: {
+  //   shadowOffset: { width: 0, height: 0 },
+  //   shadowColor: '#000',
+  //   shadowRadius: 1,
+  //   shadowOpacity: 0.5,
+  // },
 })
