@@ -6,7 +6,10 @@ export default function ConfirmationScreen({ navigation }: any) {
   const route = useRoute<any>()
   const item = route.params?.item
   const city = route.params?.city
-  // const userInformation = route.params?.userInformation
+
+  const firstName = route.params?.firstName
+  const lastName = route.params?.lastName
+  const email = route.params?.email
 
   return (
     <View style={styles.container}>
@@ -21,9 +24,9 @@ export default function ConfirmationScreen({ navigation }: any) {
           Car: {item.brand} {item.model}
         </Text>
         <Text />
-        <Text style={styles.textStyle}>First name: PLACEHOLDER</Text>
-        <Text style={styles.textStyle}>Last name: PLACEHOLDER</Text>
-        <Text style={styles.textStyle}>Email: PLACEHOLDER</Text>
+        <Text style={styles.textStyle}>First name: {firstName}</Text>
+        <Text style={styles.textStyle}>Last name: {lastName}</Text>
+        <Text style={styles.textStyle}>Email: {email}</Text>
         <Text style={styles.textStyle}>Return Date: PLACEHOLDER</Text>
       </View>
 
@@ -52,9 +55,7 @@ export default function ConfirmationScreen({ navigation }: any) {
         ]}
         delayPressOut={400}
         underlayColor="#444"
-        onPress={() =>
-          navigation.navigate('Receipt' /* , { userInformation } */)
-        }
+        onPress={() => navigation.navigate('Receipt', { firstName })}
       >
         <Text style={styles.buttontext}>Book</Text>
       </TouchableHighlight>
