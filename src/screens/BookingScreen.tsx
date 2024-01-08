@@ -12,7 +12,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler'
 import imageSelect from '../searchImage'
 import DatePicker, {
   getToday,
-  getFormateDate,
+  getFormatedDate,
 } from 'react-native-modern-datepicker'
 
 export default function BookingScreen({ navigation }: any) {
