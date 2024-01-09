@@ -30,7 +30,7 @@ export default function CitySelectionScreen({ navigation }: any) {
     disableSearch = true
     buttonBG = '#434343'
   }
-  
+
   return (
     <View style={styles.container}>
       <Image source={require('../../assets/logo.png')} style={styles.image} />
