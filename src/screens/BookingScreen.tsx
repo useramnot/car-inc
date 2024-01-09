@@ -84,22 +84,22 @@ export default function BookingScreen({ navigation }: any) {
             <TextInput
               style={styles.textInput}
               onChangeText={(newFirstName) => setFirstName(newFirstName.trim())}
-              placeholder="First name*"
+              placeholder="First name"
             />
             <TextInput
               style={styles.textInput}
               onChangeText={(newLastName) => setLastName(newLastName.trim())}
-              placeholder="Last name*"
+              placeholder="Last name"
             />
             <TextInput
               style={styles.textInput}
               onChangeText={(newEmail) => setEmail(newEmail.trim())}
-              placeholder="Email*"
+              placeholder="Email address"
             />
             <TextInput
               style={styles.textInput}
               onPressIn={handleOnPress}
-              placeholder="Return date*"
+              placeholder="Return date"
               value={date}
             />
             <Modal animationType="slide" transparent={true} visible={open}>
@@ -193,14 +193,15 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 18,
-    borderWidth: 1,
-    borderRadius: 3,
+    borderRadius: 10,
     marginHorizontal: 10,
     marginBottom: 15,
     padding: 10,
+    elevation: 5,
   },
 
   button: {
@@ -209,7 +210,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#000',
     width: '50%',
-    borderRadius: 25,
+    borderRadius: 100,
     height: 45,
     marginBottom: '10%',
     elevation: 5,
@@ -247,7 +248,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 15,
-    borderRadius: 20,
-    elevation: 5,
+    borderRadius: 100,
   },
 })

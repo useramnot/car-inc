@@ -14,8 +14,8 @@ export default function ConfirmationScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 18, marginTop: 10 }}>
-        Please check your booking information below:
+      <Text style={{ fontSize: 18 }}>
+        Review your booking information below:
       </Text>
       <Text />
 
@@ -40,11 +40,11 @@ export default function ConfirmationScreen({ navigation }: any) {
           <Text style={{ fontWeight: 'normal' }}>{lastName}</Text>
         </Text>
         <Text style={styles.textStyle}>
-          Email:{'  '}
+          Email address:{'  '}
           <Text style={{ fontWeight: 'normal' }}>{email}</Text>
         </Text>
         <Text style={styles.textStyle}>
-          Return Date:{'  '}
+          Return date:{'  '}
           <Text style={{ fontWeight: 'normal' }}>{date}</Text>
         </Text>
       </View>
@@ -76,7 +76,7 @@ export default function ConfirmationScreen({ navigation }: any) {
         underlayColor="#444"
         onPress={() => navigation.navigate('Receipt', { firstName, email })}
       >
-        <Text style={styles.buttontext}>Book</Text>
+        <Text style={styles.buttontext}>Confirm</Text>
       </TouchableHighlight>
     </View>
   )
@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     backgroundColor: '#000',
-    borderRadius: 25,
+    borderWidth: 2,
+    borderRadius: 100,
     width: '50%',
     height: 45,
     elevation: 5,

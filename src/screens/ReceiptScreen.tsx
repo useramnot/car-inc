@@ -28,7 +28,7 @@ export default function ReceiptScreen({ navigation }: any) {
         </Text>
         <Text />
         <Text style={styles.textStyle}>
-          The confirmation has been sent to your email address:
+          The receipt has been sent to your email address:
           <Text style={{ fontWeight: '600' }}> {email}</Text>
         </Text>
       </View>
@@ -39,7 +39,7 @@ export default function ReceiptScreen({ navigation }: any) {
         underlayColor="#444"
         onPress={() => navigation.navigate('CitySelection')}
       >
-        <Text style={styles.buttontext}>Go back to Home</Text>
+        <Text style={styles.buttontext}>Home</Text>
       </TouchableHighlight>
     </View>
   )
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     backgroundColor: '#000',
-    borderRadius: 25,
+    borderRadius: 100,
     width: '80%',
     height: 45,
     elevation: 5,
