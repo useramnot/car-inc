@@ -2,6 +2,8 @@ import { useRoute } from '@react-navigation/native'
 import React, { useState } from 'react'
 import {
   Image,
+  Modal,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -9,11 +11,8 @@ import {
   View,
 } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
+import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker'
 import imageSelect from '../searchImage'
-import DatePicker, {
-  getToday,
-  getFormatedDate,
-} from 'react-native-modern-datepicker'
 
 export default function BookingScreen({ navigation }: any) {
   const route = useRoute<any>()
@@ -23,7 +22,6 @@ export default function BookingScreen({ navigation }: any) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
-  const [returnDate, setReturnDate] = useState('')
 
   function nameApproved(name: string): boolean {
     const naming: RegExp = /^[a-zA-Z]+$/
@@ -35,43 +33,36 @@ export default function BookingScreen({ navigation }: any) {
     return regexMail.test(email)
   }
 
+  function dateApproved(date: string): boolean {
+    return date != ''
+  }
+
   function inputsApproved(): boolean {
     return (
-      nameApproved(firstName) && nameApproved(lastName) && emailApproved(email)
+      nameApproved(firstName) &&
+      nameApproved(lastName) &&
+      emailApproved(email) &&
+      dateApproved(date)
     )
   }
-  // let birthDate = ''
-  // let setBirthDate = (value: any) => {
-  //   // console.log(Object.keys(value))
-  //   // console.log(Object.values(value))
-  //   // let result = Object.values(value.values)
-  //   const regexddmmyyyy: RegExp =
-  //     /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[0-2])[- /.](19|20)\d\d$/  DON'T DELETE THAT YET
-  //   // let valueStr = ''
-  //   // valueStr = value.
-  //   // Object.values()
-  //   //console.log(value)
 
-  type InputProps = {
-    id: string
-    onEndEditing: any
-    // value: string
-    placeholder: string
+  const today = new Date()
+
+  const startDate = getFormatedDate(today)
+
+  const [open, setOpen] = useState(false)
+  const [date, setDate] = useState('')
+
+  let [disableNext] = useState(true)
+  let [buttonBG] = useState('#434343')
+
+  if (inputsApproved()) {
+    disableNext = false
+    buttonBG = '#000'
   }
 
-  const Input = (props: InputProps) => {
-    return (
-      <TextInput
-        id={props.id}
-        onEndEditing={props.onEndEditing}
-        // value={props.value}
-        placeholder={props.placeholder}
-        style={styles.textInput}
-        placeholderTextColor={'#666'}
-        enablesReturnKeyAutomatically={true}
-        // autoComplete="name"
-      />
-    )
+  function handleOnPress() {
+    setOpen(!open)
   }
 
   return (
@@ -83,13 +74,10 @@ export default function BookingScreen({ navigation }: any) {
           <Text style={{ fontSize: 15 }}> kr/day</Text>
         </Text>
       </View>
+
       <View style={styles.information}>
-        <ScrollView
-          style={styles.scrollView}
-          showsVerticalScrollIndicator={true}
-          overScrollMode="never"
-        >
-          <View /* style={{ alignSelf: 'center' }} */>
+        <ScrollView showsVerticalScrollIndicator={true} overScrollMode="never">
+          <View>
             <Text id="Your information" style={styles.header}>
               Your information
             </Text>
@@ -98,33 +86,62 @@ export default function BookingScreen({ navigation }: any) {
               onChangeText={(newText) => setFirstName(newText)}
               placeholder="First name*"
             />
-            <Text style={styles.inputError}></Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(newText) => setLastName(newText)}
               placeholder="Last name*"
             />
-            <Text style={styles.inputError}></Text>
             <TextInput
               style={styles.textInput}
               onChangeText={(newText) => setEmail(newText)}
               placeholder="Email*"
             />
-            <Text style={styles.inputError}></Text>
             <TextInput
               style={styles.textInput}
-              onChangeText={(newText) => setReturnDate(newText)}
+              onPressIn={handleOnPress}
               placeholder="Return date*"
+              value={date}
             />
-            <Text style={styles.inputError}></Text>
+            <Modal animationType="slide" transparent={true} visible={open}>
+              <View style={styles.calendarScreen}>
+                <View style={styles.calendarBottom}>
+                  <DatePicker
+                    mode="calendar"
+                    minimumDate={startDate}
+                    selected={date}
+                    onDateChange={(propDate: any) => setDate(propDate)}
+                  />
+                  <Pressable
+                    style={styles.confirmButton}
+                    onPress={handleOnPress}
+                  >
+                    <Text style={styles.buttontext}>Confirm</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </Modal>
           </View>
         </ScrollView>
       </View>
+
       <TouchableHighlight
-        style={styles.button}
+        style={[styles.button, { backgroundColor: buttonBG }]}
         delayPressOut={400}
-        underlayColor="#444"
-        onPress={() => navigation.navigate('Confirmation', { item, city })}
+        activeOpacity={0.7}
+        underlayColor="#434343"
+        disabled={disableNext}
+        onPress={() => {
+          if (inputsApproved()) {
+            navigation.navigate('Confirmation', {
+              item,
+              city,
+              firstName,
+              lastName,
+              email,
+              date,
+            })
+          }
+        }}
       >
         <Text style={styles.buttontext}>Next</Text>
       </TouchableHighlight>
@@ -160,24 +177,19 @@ const styles = StyleSheet.create({
 
   information: {
     flex: 1,
-    // alignSelf: 'center',
     justifyContent: 'center',
   },
 
-  scrollView: {
-    // flex: 1,
-    // alignItems: 'center',
-    //justifyContent: 'center',
-  },
-
   header: {
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: '500',
     borderBottomWidth: 1,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 2,
+    borderBottomRightRadius: 2,
     marginHorizontal: 10,
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 5,
+    marginBottom: 10,
   },
 
   textInput: {
@@ -187,7 +199,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 3,
     marginHorizontal: 10,
-    marginTop: 5,
+    marginBottom: 15,
     padding: 10,
   },
 
@@ -208,8 +220,34 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 
-  inputError: {
-    marginHorizontal: 10,
-    color: 'red',
+  calendarScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '3.9%',
+    elevation: 5,
+  },
+
+  calendarBottom: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    alignItems: 'center',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    elevation: 5,
+  },
+  confirmButton: {
+    backgroundColor: '#000',
+    width: '25%',
+    height: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15,
+    borderRadius: 20,
+    elevation: 5,
   },
 })

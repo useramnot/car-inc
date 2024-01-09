@@ -12,17 +12,14 @@ export default function CitySelectionScreen({ navigation }: any) {
   let [buttonBG] = useState('#000')
 
   useEffect(() => {
-    //Get Values from database
     axios
       .get(
         'https://my-json-server.typicode.com/MetaSoc/car-inc-database/cities'
       )
       .then((response) => {
-        // Store Values in Temporary Array
         let citiesArray = response.data.map((item: any) => {
           return { key: item.id, value: item.name }
         })
-        //Set Data Variable
         setCities(citiesArray)
         setError(false)
       })

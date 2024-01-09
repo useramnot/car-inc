@@ -1,10 +1,12 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
 import { useRoute } from '@react-navigation/native'
+import React from 'react'
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
 export default function ReceiptScreen({ navigation }: any) {
   const route = useRoute<any>()
-  //   const user = route.params?.item
+
+  const firstName = route.params?.firstName
+  const email = route.params?.email
 
   return (
     <View style={styles.container}>
@@ -16,7 +18,7 @@ export default function ReceiptScreen({ navigation }: any) {
           marginBottom: 20,
         }}
       >
-        Congratulations, PLACEHOLDER NAME!
+        Congratulations, {firstName}!
       </Text>
       <Text />
 
@@ -27,7 +29,7 @@ export default function ReceiptScreen({ navigation }: any) {
         <Text />
         <Text style={styles.textStyle}>
           The confirmation has been sent to your email address:
-          <Text style={{ fontWeight: '600' }}> PLACEHOLDER EMAIL</Text>
+          <Text style={{ fontWeight: '600' }}> {email}</Text>
         </Text>
       </View>
 

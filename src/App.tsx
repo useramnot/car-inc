@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { StyleSheet } from 'react-native'
 import 'react-native-gesture-handler'
 
 import CitySelectionScreen from './screens/CitySelectionScreen'
@@ -65,22 +64,3 @@ export default function App() {
     </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   backgroundColor: '#000',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
-  // shadow: {
-  //   shadowColor: '#000',
-  //   elevation: 10,
-  // },
-  // headerShadow: {
-  //   shadowOffset: { width: 0, height: 0 },
-  //   shadowColor: '#000',
-  //   shadowRadius: 1,
-  //   shadowOpacity: 0.5,
-  // },
-})

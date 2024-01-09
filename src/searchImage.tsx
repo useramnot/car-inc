@@ -1,8 +1,4 @@
 const imageSelect = (index: any) => {
-  // if (index === null) {
-  //   return requirements.kia_ceed;
-  // }
-
   const imageArray: any = {
     '2 Series': require('../assets/cars/bmw-2-series.png'),
     Ceed: require('../assets/cars/kia-ceed.png'),
@@ -15,8 +11,6 @@ const imageSelect = (index: any) => {
     Rav4: require('../assets/cars/toyota-rav4.png'),
     'Zoe Electric': require('../assets/cars/renault-zoe-electric.png'),
   }
-
   return imageArray[index]
 }
-
 export default imageSelect

@@ -1,6 +1,6 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableHighlight, Image } from 'react-native'
 import { useRoute } from '@react-navigation/native'
+import React from 'react'
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
 export default function CarDetailsScreen({ navigation }: any) {
   const route = useRoute<any>()

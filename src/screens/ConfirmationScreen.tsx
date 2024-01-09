@@ -1,12 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
 import { useRoute } from '@react-navigation/native'
+import React from 'react'
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 
 export default function ConfirmationScreen({ navigation }: any) {
   const route = useRoute<any>()
   const item = route.params?.item
   const city = route.params?.city
-  // const userInformation = route.params?.userInformation
+
+  const firstName = route.params?.firstName
+  const lastName = route.params?.lastName
+  const email = route.params?.email
+  const date = route.params?.date
 
   return (
     <View style={styles.container}>
@@ -16,15 +20,33 @@ export default function ConfirmationScreen({ navigation }: any) {
       <Text />
 
       <View style={styles.information}>
-        <Text style={styles.textStyle}>City: {city}</Text>
         <Text style={styles.textStyle}>
-          Car: {item.brand} {item.model}
+          City:{'  '}
+          <Text style={{ fontWeight: 'normal' }}>{city}</Text>
+        </Text>
+        <Text style={styles.textStyle}>
+          Car:{'  '}
+          <Text style={{ fontWeight: 'normal' }}>
+            {item.brand} {item.model}
+          </Text>
         </Text>
         <Text />
-        <Text style={styles.textStyle}>First name: PLACEHOLDER</Text>
-        <Text style={styles.textStyle}>Last name: PLACEHOLDER</Text>
-        <Text style={styles.textStyle}>Email: PLACEHOLDER</Text>
-        <Text style={styles.textStyle}>Return Date: PLACEHOLDER</Text>
+        <Text style={styles.textStyle}>
+          First name:{'  '}
+          <Text style={{ fontWeight: 'normal' }}>{firstName}</Text>
+        </Text>
+        <Text style={styles.textStyle}>
+          Last name:{'  '}
+          <Text style={{ fontWeight: 'normal' }}>{lastName}</Text>
+        </Text>
+        <Text style={styles.textStyle}>
+          Email:{'  '}
+          <Text style={{ fontWeight: 'normal' }}>{email}</Text>
+        </Text>
+        <Text style={styles.textStyle}>
+          Return Date:{'  '}
+          <Text style={{ fontWeight: 'normal' }}>{date}</Text>
+        </Text>
       </View>
 
       <TouchableHighlight
@@ -52,9 +74,7 @@ export default function ConfirmationScreen({ navigation }: any) {
         ]}
         delayPressOut={400}
         underlayColor="#444"
-        onPress={() =>
-          navigation.navigate('Receipt' /* , { userInformation } */)
-        }
+        onPress={() => navigation.navigate('Receipt', { firstName, email })}
       >
         <Text style={styles.buttontext}>Book</Text>
       </TouchableHighlight>
@@ -71,6 +91,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 16,
+    fontWeight: '500',
   },
   information: {
     padding: 10,
