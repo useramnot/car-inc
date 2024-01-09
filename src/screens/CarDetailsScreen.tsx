@@ -39,7 +39,6 @@ export default function CarDetailsScreen({ navigation }: any) {
               <View
                 style={{
                   flexDirection: 'row',
-                  // justifyContent: 'space-around',
                 }}
               >
                 <Image

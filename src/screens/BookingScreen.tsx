@@ -24,7 +24,7 @@ export default function BookingScreen({ navigation }: any) {
   const [email, setEmail] = useState('')
 
   function nameApproved(name: string): boolean {
-    const naming: RegExp = /^[a-zA-Z]+$/
+    const naming: RegExp = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/
     return naming.test(name)
   }
 
@@ -83,17 +83,17 @@ export default function BookingScreen({ navigation }: any) {
             </Text>
             <TextInput
               style={styles.textInput}
-              onChangeText={(newText) => setFirstName(newText)}
+              onChangeText={(newFirstName) => setFirstName(newFirstName.trim())}
               placeholder="First name*"
             />
             <TextInput
               style={styles.textInput}
-              onChangeText={(newText) => setLastName(newText)}
+              onChangeText={(newLastName) => setLastName(newLastName.trim())}
               placeholder="Last name*"
             />
             <TextInput
               style={styles.textInput}
-              onChangeText={(newText) => setEmail(newText)}
+              onChangeText={(newEmail) => setEmail(newEmail.trim())}
               placeholder="Email*"
             />
             <TextInput
